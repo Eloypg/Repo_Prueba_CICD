@@ -25,8 +25,10 @@ jobs:
           distribution: temurin         # Utiliza dist OpenJDK llamada Temurin.
 
       # 3️⃣ Construir la aplicación usando Maven
-      - name: Build with Maven          # Nombre del paso.
-        run: mvn clean package          # Construir proyecto, generando .war.
+      - name: Build and test with Maven          # Nombre del paso.
+        run: |
+          mvn clean package          # Construir proyecto, generando .war.
+          mvn test
 
       # 4️⃣ Copiar el archivo .war a la instancia EC2
       - name: Copy .war to EC2          # Nombre del paso.
